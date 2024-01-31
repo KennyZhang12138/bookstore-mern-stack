@@ -3,6 +3,7 @@ import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import { Book } from "./models/books.js";
 import booksRoute from "./routes/booksRoute.js";
+import cors from "cors";
 
 const app = express();
 
@@ -13,13 +14,13 @@ app.use(express.json());
 //1. Allow all Origins with defalut of cors (*)
 app.use(cors());
 //2. Allow custom Origins
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    method: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     method: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type"],
+//   })
+// );
 
 app.get("/", (rq, rs) => {
   console.log(rq);
